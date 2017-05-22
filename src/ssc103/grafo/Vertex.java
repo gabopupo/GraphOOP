@@ -1,13 +1,13 @@
 package ssc103.grafo;
 
 public class Vertex {
-	private int name;
+	private String name;
 	
-	public Vertex(int name) {
+	public Vertex(String name) {
 		this.name = name;
 	}
 	
-	public int getName() {
+	public String getName() {
 		return name;
 	}
 }
