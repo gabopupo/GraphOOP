@@ -3,36 +3,32 @@ package ssc103.grafo;
 import java.io.IOException;
 
 public class ShortestPath {
-
 	public static void main(String[] args) throws IOException {
+		int edges, weight; // número de vértices e de arestas
+		String source, destiny, from, to;
 
-		int dist[];
-		int vertexes, edges; // número de vértices e de arestas
-		int weight; // saída, destino e peso de cada aresta
-		int source;
-		String from, to;
-		
-		vertexes = EntradaTeclado.leInt();
 		edges = EntradaTeclado.leInt();
+
+		Graph g = new Graph();
 		
 		for (int i = 0; i < edges; i++) {
+			System.out.println("from:");
 			from = EntradaTeclado.leString();
+			System.out.println("to:");
 			to = EntradaTeclado.leString();
+			System.out.println("peso:");
 			weight = EntradaTeclado.leInt();
 			
 			g.addEdge(from, to, weight);
-			// inserir "e" no grafo
 		}
 		
 		System.out.print("Insira o vértice de partida: ");
-		source = EntradaTeclado.leInt();
+		source = EntradaTeclado.leString();
 		
-		dist = Dijkstra.getShortestPath(new Graph(), source);
+		System.out.println("Insira o vértice de destino: ");
+		destiny = EntradaTeclado.leString();
 		
-		System.out.println("Distâncias até a origem:");
-		for (int i = 0; i < vertexes; i++) {
-			System.out.println(i + "\t->\t" + dist[i]);
-		}
+		int dist = Dijkstra.getShortestPath(g, source, destiny);
+		System.out.println("Distância de " + source + " a " + destiny + ": " + dist);
 	}
-
 }

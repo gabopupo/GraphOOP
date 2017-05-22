@@ -9,6 +9,7 @@ public class Graph extends TreeSet<Edge> {
 	
 	public Graph() {
 		super();
+		vertex = new TreeSet<String>();
 	}
 	
 	public TreeSet<String> getVertexes() {

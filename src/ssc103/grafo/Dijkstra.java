@@ -1,44 +1,60 @@
 package ssc103.grafo;
 
+import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.PriorityQueue;
+import java.util.Iterator;
+import java.util.Map;
 import java.util.TreeSet;
 
-public class Dijkstra {
-	public static HashMap<String, Integer> getShortestPath(Graph g, String source) {
-		PriorityQueue<Vertex> Q = new PriorityQueue<Vertex>();
-		TreeSet<Vertex> vertexes = g.getVertexes(); // to be implemented
+public class Dijkstra {	
+	private static String getMin(HashMap<String, Integer> vertSet) {
+		Iterator it = vertSet.entrySet().iterator();
+		String minimum = null;
+		int min_val = Integer.MAX_VALUE;
+		
+		while(it.hasNext()) {
+			Map.Entry pair = (Map.Entry) it.next();
+			
+			if ((int) pair.getValue() < min_val) {
+				min_val = (int) pair.getValue();
+				minimum = (String) pair.getKey();
+			}
+		}
+		
+		return minimum;
+	}
+	
+	public static int getShortestPath(Graph g, String source, String destiny) {
+		//PriorityQueue<String> Q = new PriorityQueue<String>();
+		TreeSet<String> vertexes = g.getVertexes(); // to be implemented
+		HashMap<String, Integer> vertSet = new HashMap<>();
 		HashMap<String, Integer> dist = new HashMap<>(); // distâncias até a origem
 		HashMap<String, String> pred = new HashMap<>(); // predecessores
-		
-<<<<<<< HEAD
-		for (Vertex v: vertexes) {
-			dist.put(v.getName(), Integer.MAX_VALUE);
-			pred.put(v.getName(), null);
-			Q.add(v); // add um vértice de g à fila de prioridades
-=======
-		int n_v = g.getVertexNumber();
-		int pred[] = new int[n_v];
-		
-		
-		for (int i = 0; i < n_v; i++) {
-			dist[i] = Integer.MAX_VALUE;
-			pred[i] = -1;
-			Q.add(new Vertex(i)); // add um vértice de g
->>>>>>> fabio
+
+		for (String v: vertexes) {
+			dist.put(v, Integer.MAX_VALUE);
+			pred.put(v, null);
+			vertSet.put(v, Integer.MAX_VALUE); // add um vértice de g à fila de prioridades
 		}
 		
-		if (dist.containsKey(source)) 	dist.replace(source, 0); // atualizar a distância da origem
-		
-		while (Q.size() != 0) {
-			Vertex min = Q.poll();
-			// para cada vértice adjacente a min:
-				int alt = dist.get(min.getName()); // + distancia do vertice ao adjacente
-				// if alt < dist.get(adj);
-					dist.replace("", alt);
-					pred.replace("", min.getName());
+		if (dist.containsKey(source)) {
+			vertSet.replace(source, 0); // atualizar a distância da origem
 		}
 		
-		return dist;
+		while (vertSet.size() != 0) {
+			String min = Dijkstra.getMin(vertSet);
+			vertSet.remove(min);
+			
+			ArrayList<Edge> adjacents = g.getAdjacents(min);
+			for (Edge adj: adjacents) {
+				System.out.println(adj.getFrom() + " adjacente a " + adj.getTo() + " com peso " + adj.getWeight());
+				int alt = dist.get(min) + adj.getWeight(); // + distancia do vertice ao adjacente
+				if (alt < dist.get(adj.getTo())) {// if alt < dist.get(adj);
+					dist.replace(adj.getTo(), alt);
+					pred.replace(adj.getTo(), min);
+				}
+			}
+		}
+		return dist.get(destiny);
 	}
 }

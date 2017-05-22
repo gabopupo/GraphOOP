@@ -1,6 +1,6 @@
 package ssc103.grafo;
 
-public class Edge { // aresta direcionada
+public class Edge implements Comparable { // aresta direcionada
 	private String from, to;
 	private int weight;
 	
@@ -32,5 +32,12 @@ public class Edge { // aresta direcionada
 	
 	public int getWeight() {
 		return weight;
+	}
+
+	@Override
+	public int compareTo(Object o) {
+		// TODO Auto-generated method stub
+		Edge e = (Edge) o;
+		return this.getTo().charAt(0) - e.getTo().charAt(0);
 	}
 }
