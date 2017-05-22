@@ -6,18 +6,19 @@ public class ShortestPath {
 
 	public static void main(String[] args) throws IOException {
 		int vertices, edges; // número de vértices e de arestas
-		int from, to, weight; // saída, destino e peso de cada aresta
+		int weight; // saída, destino e peso de cada aresta
 		int source;
+		String from, to;
 		
 		vertices = EntradaTeclado.leInt();
 		edges = EntradaTeclado.leInt();
 		
 		for (int i = 0; i < edges; i++) {
-			from = EntradaTeclado.leInt();
-			to = EntradaTeclado.leInt();
+			from = EntradaTeclado.leString();
+			to = EntradaTeclado.leString();
 			weight = EntradaTeclado.leInt();
 			
-			Edge e = new Edge(from, to, weight);
+			g.addEdge(from, to, weight);
 			// inserir "e" no grafo
 		}
 		

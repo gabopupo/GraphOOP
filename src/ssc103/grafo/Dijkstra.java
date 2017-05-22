@@ -1,5 +1,6 @@
 package ssc103.grafo;
 
+import java.util.HashMap;
 import java.util.PriorityQueue;
 
 public class Dijkstra {
@@ -7,8 +8,8 @@ public class Dijkstra {
 		PriorityQueue<Vertex> Q = new PriorityQueue<Vertex>();
 		
 		int n_v = g.getVertexNumber();
-		int dist[] = new int[n_v];
 		int pred[] = new int[n_v];
+		
 		
 		for (int i = 0; i < n_v; i++) {
 			dist[i] = Integer.MAX_VALUE;
