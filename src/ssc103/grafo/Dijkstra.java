@@ -1,7 +1,6 @@
 package ssc103.grafo;
 
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.PriorityQueue;
 import java.util.TreeSet;
 
@@ -12,10 +11,21 @@ public class Dijkstra {
 		HashMap<String, Integer> dist = new HashMap<>(); // distâncias até a origem
 		HashMap<String, String> pred = new HashMap<>(); // predecessores
 		
+<<<<<<< HEAD
 		for (Vertex v: vertexes) {
 			dist.put(v.getName(), Integer.MAX_VALUE);
 			pred.put(v.getName(), null);
 			Q.add(v); // add um vértice de g à fila de prioridades
+=======
+		int n_v = g.getVertexNumber();
+		int pred[] = new int[n_v];
+		
+		
+		for (int i = 0; i < n_v; i++) {
+			dist[i] = Integer.MAX_VALUE;
+			pred[i] = -1;
+			Q.add(new Vertex(i)); // add um vértice de g
+>>>>>>> fabio
 		}
 		
 		if (dist.containsKey(source)) 	dist.replace(source, 0); // atualizar a distância da origem

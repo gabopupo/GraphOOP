@@ -1,30 +1,33 @@
 package ssc103.grafo;
 
 public class Edge { // aresta direcionada
-	private Vertex from, to;
+	private String from, to;
 	private int weight;
 	
-	public Edge(Vertex from, Vertex to, int weight) {
+	public String getFrom() {
+		return from;
+	}
+
+	public void setFrom(String from) {
 		this.from = from;
+	}
+
+	public String getTo() {
+		return to;
+	}
+
+	public void setTo(String to) {
 		this.to = to;
+	}
+	
+	public Edge(String name1, String name2, int weight) {
+		from = name1;
+		to = name2;
 		this.weight = weight;
 	}
 	
-	public Edge(int name1, int name2, int weight) {
-		from = new Vertex(name1);
-		to = new Vertex(name2);
+	public void setWeight(int weight) {
 		this.weight = weight;
-	}
-	
-	public Vertex[] getNodes() {
-		Vertex[] nodes = new Vertex[2];
-		nodes[0] = from;
-		nodes[1] = to;
-		return nodes;
-	}
-	
-	public void updateWeight(int new_weight) {
-		weight = new_weight;
 	}
 	
 	public int getWeight() {
