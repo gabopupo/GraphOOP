@@ -73,7 +73,7 @@ public class Dijkstra {
 				}
 			}
 		}
-		
+
 		return dist.get(destiny);
 	}
 }
