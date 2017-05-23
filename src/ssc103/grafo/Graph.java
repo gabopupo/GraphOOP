@@ -37,7 +37,7 @@ public class Graph extends TreeSet<Edge> {
 	 */
 	public Edge get(String from, String to, Integer weight) {
 		for(Edge e : this) {
-			if(e.getFrom().equals(from) && e.getFrom().equals(to))
+			if(e.getFrom().equals(from) && e.getTo().equals(to) && e.getWeight() == weight)
 				return e;
 		}
 		

@@ -42,17 +42,4 @@ static BufferedReader br = new BufferedReader(isr);
 		String x = leString();
 		return Integer.parseInt(x);
 	}
-
-	/**
-	 * Le um string do teclado (uma linha toda) e tenta transformá-lo num double. 
-	 * Porém não faz qualquer verificação sobre a validade do dado digitado.
-	 * @return  o valor double digitado pelo usuário. 
-	 * @throws IOException
-	 */
-
-	public static double leDouble() throws IOException {
-		String x = leString();
-		return Double.parseDouble(x);
-
-	}
 }

@@ -53,11 +53,9 @@ public class Dijkstra {
 			pred.put(v, null);
 			vertSet.put(v, Integer.MAX_VALUE); // add um vértice de g ao set de vértices
 		}
-		
-		if (dist.containsKey(source)) {
-			dist.replace(source, 0);
-			vertSet.replace(source, 0); // atualizar a distância da origem
-		}
+
+		dist.replace(source, 0);
+		vertSet.replace(source, 0); // atualizar a distância da origem
 		
 		while (vertSet.size() != 0) {
 			String min = Dijkstra.getMin(vertSet); // pega o vértice de menor distância

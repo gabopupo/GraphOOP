@@ -45,9 +45,9 @@ public class Edge implements Comparable { // aresta direcionada
 	 * @param weight peso da aresta
 	 */
 	public Edge(String name1, String name2, int weight) {
-		from = name1;
-		to = name2;
-		this.weight = weight;
+		setFrom(name1);
+		setTo(name2);
+		setWeight(weight);
 	}
 	/**
 	 * Define o peso da aresta.
@@ -62,17 +62,6 @@ public class Edge implements Comparable { // aresta direcionada
 	 */
 	public int getWeight() {
 		return weight;
-	}
-	
-	public boolean equals(Object o) {
-		Edge e = (Edge) o;
-		
-		if(from.equals(e.getFrom()))
-			if(to.equals(e.getTo()))
-				if(weight == e.getWeight())
-					return true;
-				
-		return false;		
 	}
 
 	@Override
