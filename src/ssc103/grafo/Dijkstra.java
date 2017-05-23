@@ -38,23 +38,34 @@ public class Dijkstra {
 		}
 		
 		if (dist.containsKey(source)) {
+			dist.replace(source, 0);
 			vertSet.replace(source, 0); // atualizar a distância da origem
 		}
 		
 		while (vertSet.size() != 0) {
 			String min = Dijkstra.getMin(vertSet);
+			
 			vertSet.remove(min);
 			
 			ArrayList<Edge> adjacents = g.getAdjacents(min);
+			
 			for (Edge adj: adjacents) {
-				System.out.println(adj.getFrom() + " adjacente a " + adj.getTo() + " com peso " + adj.getWeight());
 				int alt = dist.get(min) + adj.getWeight(); // + distancia do vertice ao adjacente
 				if (alt < dist.get(adj.getTo())) {// if alt < dist.get(adj);
 					dist.replace(adj.getTo(), alt);
+					vertSet.replace(adj.getTo(), alt);
 					pred.replace(adj.getTo(), min);
 				}
 			}
 		}
+		
+		Iterator it = dist.entrySet().iterator();
+		
+		while(it.hasNext()) {
+			Map.Entry pair = (Map.Entry) it.next();
+			System.out.println("dist[" + pair.getKey() + "] = " + pair.getValue());
+		}
+		
 		return dist.get(destiny);
 	}
 }

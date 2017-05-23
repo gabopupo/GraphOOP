@@ -26,25 +26,20 @@ public class Graph extends TreeSet<Edge> {
 	}
 	
 	public void addEdge(String from, String to, Integer weight) {
-		Edge e = get(from, to, weight);
-		if(e != null)
-			e.setWeight(weight);
-		
-		else {
-			
-			if(!vertex.contains(from)) vertex.add(from);
-			if(!vertex.contains(to)) vertex.add(to);
+		vertex.add(from);
+		vertex.add(to);
 
-			add(new Edge(from, to, weight));
-		}	
+		add(new Edge(from, to, weight));
 	}
 	
 	public ArrayList<Edge> getAdjacents(String v) {
 		ArrayList<Edge> adj = new ArrayList<>();
 		
-		for(Edge e : this)
+		for(Edge e : this) {
 			if(e.getFrom().equals(v))
-				adj.add(e);
+			adj.add(e);
+			
+		}
 		
 		return adj;
 	}

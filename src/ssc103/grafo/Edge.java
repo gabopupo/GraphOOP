@@ -33,11 +33,26 @@ public class Edge implements Comparable { // aresta direcionada
 	public int getWeight() {
 		return weight;
 	}
+	
+	public boolean equals(Object o) {
+		Edge e = (Edge) o;
+		
+		if(from.equals(e.getFrom()))
+			if(to.equals(e.getTo()))
+				if(weight == e.getWeight())
+					return true;
+				
+		return false;		
+	}
 
 	@Override
 	public int compareTo(Object o) {
 		// TODO Auto-generated method stub
 		Edge e = (Edge) o;
-		return this.getTo().charAt(0) - e.getTo().charAt(0);
+		
+		if((getTo() + getFrom()).equals(e.getTo() + e.getFrom()))
+			return 0;
+		else
+			return 1;
 	}
 }
