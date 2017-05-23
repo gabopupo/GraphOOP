@@ -11,7 +11,7 @@ import java.util.TreeSet;
  */
 public class ShortestPath {
 	public static void main(String[] args) throws IOException {
-		int edges, weight; // número de vértices e de arestas
+		int edges, weight; // número de arestas e peso de aresta
 		String source, destiny, from, to;
 
 		System.out.print("Entre com o número de arestas do grafo: ");
